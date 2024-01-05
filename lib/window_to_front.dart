@@ -1,14 +1,15 @@
-// You have generated a new plugin project without specifying the `--platforms`
-// flag. A plugin project with no platform support was generated. To add a
-// platform, run `flutter create -t plugin --platforms <platforms> .` under the
-// same directory. You can also find a detailed instruction on how to add
-// platforms in the `pubspec.yaml` at
-// https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
+import 'dart:async';
 
-import 'window_to_front_platform_interface.dart';
+import 'package:flutter/services.dart';
 
 class WindowToFront {
-  Future<String?> getPlatformVersion() {
-    return WindowToFrontPlatform.instance.getPlatformVersion();
+  static const MethodChannel _channel = MethodChannel('window_to_front');
+  // Add from here
+  static Future<void> activate() {
+    print('WindowToFront.activate()');
+    return _channel.invokeMethod('activate');
   }
+  // to here.
+
+  // Delete the getPlatformVersion getter method.
 }
